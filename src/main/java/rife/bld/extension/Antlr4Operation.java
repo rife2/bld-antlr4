@@ -84,6 +84,9 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
         var argument_array = new String[arguments.size()];
         arguments.toArray(argument_array);
         new Tool(argument_array).processGrammarsOnCommandLine();
+        if (!silent()) {
+            System.out.println("ANTLR4 grammar processed successfully.");
+        }
     }
 
     /**
