@@ -7,6 +7,8 @@
 
 An extension for generating Java sources from ANTLR4 parsers.
 
+This is an example usage:
+
 ```java
 private final Antlr4Operation antlr4Operation_ = new Antlr4Operation();
 @BuildCommand
@@ -28,3 +30,5 @@ throws Exception {
         .mainSourceDirectories(List.of(antlr4Operation_.outputDirectory())));
 }
 ```
+
+The complete document of `Antrl4Operation` can be found in its [javadocs](https://rife2.github.io/bld-antlr4/rife/bld/extension/Antlr4Operation.html).
