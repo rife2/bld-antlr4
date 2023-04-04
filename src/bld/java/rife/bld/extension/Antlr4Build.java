@@ -18,7 +18,7 @@ public class Antlr4Build extends Project {
     public Antlr4Build() {
         pkg = "rife.bld.extension";
         name = "Antlr4";
-        version = version(0,9,2);
+        version = version(0,9,3);
         javadocOptions.docLint(NO_MISSING);
         publishRepository = repository("rife2");
         publishInfo = new PublishInfo()
@@ -29,9 +29,10 @@ public class Antlr4Build extends Project {
 
         javaRelease = 17;
         downloadSources = true;
+        autoDownloadPurge = true;
         repositories = List.of(MAVEN_CENTRAL,RIFE2);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,15)))
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,16)))
             .include(dependency("org.antlr", "antlr4", version(4,11,1)));
         scope(test)
             .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
