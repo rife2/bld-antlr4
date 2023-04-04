@@ -24,8 +24,8 @@ public class Antlr4Build extends Project {
         publishInfo = new PublishInfo()
             .groupId("com.uwyn.rife2")
             .artifactId("bld-antlr4")
-            .signKey(properties().getValueString("sign.key"))
-            .signPassphrase(properties().getValueString("sign.passphrase"));
+            .signKey(property("sign.key"))
+            .signPassphrase(property("sign.passphrase"));
 
         javaRelease = 17;
         downloadSources = true;
