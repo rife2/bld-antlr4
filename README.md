@@ -3,11 +3,16 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 [![Release](https://img.shields.io/github/release/rife2/bld-antrl4.svg)](https://github.com/rife2/bld-antlr4/releases/latest)
-[![GitHub CI](https://github.com/rife2/bld-antrl4/actions/workflows/bld.yml/badge.svg)](https://github.com/rife2/bld-antrl4/actions/workflows/bld.yml)
+[![GitHub CI](https://github.com/rife2/bld-antlr4/actions/workflows/bld.yml/badge.svg)](https://github.com/rife2/bld-antlr4/actions/workflows/bld.yml)
 
-An extension for generating Java sources from ANTLR4 parsers.
+A `bld` extension for generating Java sources from ANTLR4 parsers.
 
-This is an example usage:
+The complete document of `Antrl4Operation` can be found in its [javadocs](https://rife2.github.io/bld-antlr4/rife/bld/extension/Antlr4Operation.html).
+
+This is an example usage where your ANTLR4 sources would be located at
+`src/main/antlr` and the parsers generated into `build/generated`. The `compile`
+command then uses an adapted `CompileOperation` to include the generated
+sources into the main source directories.
 
 ```java
 private final Antlr4Operation antlr4Operation_ = new Antlr4Operation();
@@ -30,5 +35,3 @@ throws Exception {
         .mainSourceDirectories(List.of(antlr4Operation_.outputDirectory())));
 }
 ```
-
-The complete document of `Antrl4Operation` can be found in its [javadocs](https://rife2.github.io/bld-antlr4/rife/bld/extension/Antlr4Operation.html).
