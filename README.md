@@ -21,7 +21,7 @@ private final CompileOperation compileOperation = new CompileOperation();
 @BuildCommand(summary = "Generates the grammar Java sources")
 public void generateGrammar()
 throws Exception {
-    antlr4Operation.executeOnce(o -> o
+    antlr4Operation.executeOnce(() -> antlr4Operation
         .sourceDirectories(List.of(new File(srcMainDirectory(), "antlr")))
         .outputDirectory(new File(buildDirectory(), "generated"))
         // these options are specific to ANTLR4, please refer to the extension
@@ -36,7 +36,7 @@ throws Exception {
     generateGrammar();
 
     // include the generated grammar with the main sources
-    compileOperation.executeOnce(o -> o
+    compileOperation.executeOnce(() -> compileOperation
         .fromProject(this)
         .mainSourceDirectories(List.of(antlr4Operation.outputDirectory())));
 }
