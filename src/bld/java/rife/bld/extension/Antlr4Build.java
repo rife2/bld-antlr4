@@ -18,8 +18,10 @@ public class Antlr4Build extends Project {
     public Antlr4Build() {
         pkg = "rife.bld.extension";
         name = "Antlr4";
-        version = version(0,9,4);
-        javadocOptions.docLint(NO_MISSING);
+        version = version(0,9,5);
+        javadocOptions
+            .docLint(NO_MISSING)
+            .link("https://rife2.github.io/rife2/");
         publishRepository = repository("rife2");
         publishInfo = new PublishInfo()
             .groupId("com.uwyn.rife2")
