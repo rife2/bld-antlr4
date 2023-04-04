@@ -16,20 +16,27 @@ sources into the main source directories.
 
 ```java
 private final Antlr4Operation antlr4Operation_ = new Antlr4Operation();
-@BuildCommand
+
+@BuildCommand(summary = "Generates the grammar Java sources")
 public void generateGrammar()
 throws Exception {
     antlr4Operation_.executeOnce(o -> o
         .sourceDirectories(List.of(new File(srcMainDirectory(), "antlr")))
         .outputDirectory(new File(buildDirectory(), "generated"))
+        // these options are specific to ANTLR4, please refer to the extension
+        // documentation to learn more about these and other option
         .visitor()
         .longMessages());
 }
 
-// compileOperation_ is part of the main project
+@BuildCommand
 public void compile()
 throws Exception {
+    // always generate the latest grammar before compiling the sources
     generateGrammar();
+
+    // compileOperation_ is part of the main project, include the generated
+    // grammar with the main sources
     compileOperation_.executeOnce(o -> o
         .fromProject(this)
         .mainSourceDirectories(List.of(antlr4Operation_.outputDirectory())));
