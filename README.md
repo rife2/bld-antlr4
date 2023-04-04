@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[![Release](https://img.shields.io/github/release/rife2/bld-antrl4.svg)](https://github.com/rife2/bld-antlr4/releases/latest)
+[![Release](https://flat.badgen.net/maven/v/metadata-url/https:/repo.rife2.com/releases/com/uwyn/rife2/bld-antlr4/maven-metadata.xml)](https://repo.rife2.com/#/releases/com/uwyn/rife2/bld-antlr4)
 [![GitHub CI](https://github.com/rife2/bld-antlr4/actions/workflows/bld.yml/badge.svg)](https://github.com/rife2/bld-antlr4/actions/workflows/bld.yml)
 
 A `bld` extension for generating Java sources from ANTLR4 parsers.
