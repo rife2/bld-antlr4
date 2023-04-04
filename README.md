@@ -7,7 +7,7 @@
 
 A `bld` extension for generating Java sources from ANTLR4 parsers.
 
-The complete document of `Antrl4Operation` can be found in its [javadocs](https://rife2.github.io/bld-antlr4/rife/bld/extension/Antlr4Operation.html).
+The complete documentation of `Antrl4Operation` can be found in its [javadocs](https://rife2.github.io/bld-antlr4/rife/bld/extension/Antlr4Operation.html).
 
 This is an example usage where your ANTLR4 sources would be located at
 `src/main/antlr` and the parsers generated into `build/generated`. The `compile`
