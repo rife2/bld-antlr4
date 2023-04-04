@@ -18,7 +18,7 @@ public class Antlr4Build extends Project {
     public Antlr4Build() {
         pkg = "rife.bld.extension";
         name = "Antlr4";
-        version = version(0,9,3);
+        version = version(0,9,4);
         javadocOptions.docLint(NO_MISSING);
         publishRepository = repository("rife2");
         publishInfo = new PublishInfo()
