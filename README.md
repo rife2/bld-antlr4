@@ -30,7 +30,6 @@ throws Exception {
         .longMessages());
 }
 
-@BuildCommand
 public void compile()
 throws Exception {
     // always generate the latest grammar before compiling the sources
