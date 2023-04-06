@@ -134,9 +134,31 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
      * @return this operation instance
      * @since 1.0
      */
+    public Antlr4Operation sourceDirectories(File... directories) {
+        return sourceDirectories(Arrays.asList(directories));
+    }
+
+    /**
+     * Provides the source directories that will be used for the antlr operation.
+     *
+     * @param directories the source directories
+     * @return this operation instance
+     * @since 1.0
+     */
     public Antlr4Operation sourceDirectories(List<File> directories) {
         sourceDirectories_.addAll(directories);
         return this;
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @since 1.0
+     */
+    public Antlr4Operation sourceFiles(File... files) {
+        return sourceFiles(Arrays.asList(files));
     }
 
     /**
