@@ -21,12 +21,13 @@ public class Antlr4Build extends Project {
         pkg = "rife.bld.extension";
         name = "Antlr4";
         version = version(0,9,7,"SNAPSHOT");
+        archiveBaseName = "bld-antlr4";
 
         javaRelease = 17;
         downloadSources = true;
         autoDownloadPurge = true;
 
-        repositories = List.of(MAVEN_CENTRAL, repository("https://repo.rife2.com/snapshots"), RIFE2);
+        repositories = List.of(MAVEN_CENTRAL, RIFE2_SNAPSHOTS, RIFE2_RELEASES);
         scope(compile)
             .include(dependency("com.uwyn.rife2", "rife2", version(1,5,18,"SNAPSHOT")))
             .include(dependency("org.antlr", "antlr4", version(4,11,1)));
