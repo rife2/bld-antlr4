@@ -5,7 +5,6 @@
 package rife.bld.extension;
 
 import org.junit.jupiter.api.Test;
-import rife.resources.ResourceFinder;
 import rife.resources.ResourceFinderClasspath;
 import rife.tools.FileUtils;
 
