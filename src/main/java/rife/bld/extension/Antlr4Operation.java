@@ -52,10 +52,7 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
         }
 
         if (sources.isEmpty()) {
-            if (!silent()) {
-                System.out.println("ERROR: no ANTLR grammars found.");
-            }
-            throw new ExitStatusException(1);
+            throw new IllegalArgumentException("ERROR: no ANTLR grammars found.");
         }
 
         var arguments = new ArrayList<>(arguments_);
