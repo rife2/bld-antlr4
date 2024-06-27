@@ -91,7 +91,7 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
                 System.out.println("ANTLR4 grammar processed successfully.");
             }
         } else {
-            throw new ExitStatusException(1);
+            throw new ExitStatusException(ExitStatusException.EXIT_FAILURE);
         }
     }
 
