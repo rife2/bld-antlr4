@@ -6,6 +6,7 @@ package rife.bld.extension;
 
 import org.antlr.v4.Tool;
 import rife.bld.operations.AbstractOperation;
+import rife.bld.operations.exceptions.ExitStatusException;
 
 import java.io.File;
 import java.util.*;
@@ -51,7 +52,7 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
         }
 
         if (sources.isEmpty()) {
-            throw new IllegalArgumentException("ERROR: no ANTLR grammars found");
+            throw new IllegalArgumentException("ERROR: no ANTLR grammars found.");
         }
 
         var arguments = new ArrayList<>(arguments_);
@@ -83,9 +84,14 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
 
         var argument_array = new String[arguments.size()];
         arguments.toArray(argument_array);
-        new Tool(argument_array).processGrammarsOnCommandLine();
-        if (!silent()) {
-            System.out.println("ANTLR4 grammar processed successfully.");
+        var tool = new Tool(argument_array);
+        tool.processGrammarsOnCommandLine();
+        if (tool.getNumErrors() == 0) {
+            if (!silent()) {
+                System.out.println("ANTLR4 grammar processed successfully.");
+            }
+        } else {
+            throw new ExitStatusException(ExitStatusException.EXIT_FAILURE);
         }
     }
 
