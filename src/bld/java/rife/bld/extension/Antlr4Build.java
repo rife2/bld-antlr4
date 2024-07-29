@@ -29,7 +29,7 @@ public class Antlr4Build extends Project {
 
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "bld", version(2,0,0)))
+            .include(dependency("com.uwyn.rife2", "bld", version(2,0,1)))
             .include(dependency("org.antlr", "antlr4", version(4,11,1)));
         scope(test)
             .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,10,3)))
