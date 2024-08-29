@@ -9,7 +9,9 @@ import rife.bld.operations.AbstractOperation;
 import rife.bld.operations.exceptions.ExitStatusException;
 
 import java.io.File;
-import java.util.*;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Generates Java sources from ANTLR grammars.
@@ -115,7 +117,7 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
      * @since 1.0
      */
     public Antlr4Operation arguments(String... arguments) {
-        arguments_.addAll(Arrays.asList(arguments));
+        arguments_.addAll(List.of(arguments));
         return this;
     }
 
@@ -138,10 +140,11 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
      *
      * @param directories the source directories
      * @return this operation instance
+     * @see #sourceDirectories(List)
      * @since 1.0
      */
     public Antlr4Operation sourceDirectories(File... directories) {
-        return sourceDirectories(Arrays.asList(directories));
+        return sourceDirectories(List.of(directories));
     }
 
     /**
@@ -149,6 +152,31 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
      *
      * @param directories the source directories
      * @return this operation instance
+     * @see #sourceDirectoriesPaths(List)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceDirectories(Path... directories) {
+        return sourceDirectoriesPaths(List.of(directories));
+    }
+
+    /**
+     * Provides the source directories that will be used for the antlr operation.
+     *
+     * @param directories the source directories
+     * @return this operation instance
+     * @see #sourceDirectoriesStrings(List)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceDirectories(String... directories) {
+        return sourceDirectoriesStrings(List.of(directories));
+    }
+
+    /**
+     * Provides the source directories that will be used for the antlr operation.
+     *
+     * @param directories the source directories
+     * @return this operation instance
+     * @see #sourceDirectories(File...)
      * @since 1.0
      */
     public Antlr4Operation sourceDirectories(List<File> directories) {
@@ -157,14 +185,27 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
     }
 
     /**
-     * Provides the source files that will be used for the antlr operation.
+     * Provides the source directories that will be used for the antlr operation.
      *
-     * @param files the source files
+     * @param directories the source directories
      * @return this operation instance
+     * @see #sourceDirectories(Path...)
      * @since 1.0
      */
-    public Antlr4Operation sourceFiles(File... files) {
-        return sourceFiles(Arrays.asList(files));
+    public Antlr4Operation sourceDirectoriesPaths(List<Path> directories) {
+        return sourceDirectories(directories.stream().map(Path::toFile).toList());
+    }
+
+    /**
+     * Provides the source directories that will be used for the antlr operation.
+     *
+     * @param directories the source directories
+     * @return this operation instance
+     * @see #sourceDirectories(File...)
+     * @since 1.0
+     */
+    public Antlr4Operation sourceDirectoriesStrings(List<String> directories) {
+        return sourceDirectories(directories.stream().map(File::new).toList());
     }
 
     /**
@@ -172,11 +213,72 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
      *
      * @param files the source files
      * @return this operation instance
+     * @see #sourceFiles(List)
+     * @since 1.0
+     */
+    public Antlr4Operation sourceFiles(File... files) {
+        return sourceFiles(List.of(files));
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @see #sourceFilesPaths(List)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceFiles(Path... files) {
+        return sourceFilesPaths(List.of(files));
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @see #sourceFilesStrings(List)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceFiles(String... files) {
+        return sourceFilesStrings(List.of(files));
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @see #sourceFiles(File...)
      * @since 1.0
      */
     public Antlr4Operation sourceFiles(List<File> files) {
         sourceFiles_.addAll(files);
         return this;
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @see #sourceFiles(Path...)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceFilesPaths(List<Path> files) {
+        return sourceFiles(files.stream().map(Path::toFile).toList());
+    }
+
+    /**
+     * Provides the source files that will be used for the antlr operation.
+     *
+     * @param files the source files
+     * @return this operation instance
+     * @see #sourceFiles(String...)
+     * @since 1.4
+     */
+    public Antlr4Operation sourceFilesStrings(List<String> files) {
+        return sourceFiles(files.stream().map(File::new).toList());
     }
 
     /**
@@ -192,6 +294,28 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
     }
 
     /**
+     * Provides the output directory where all output is generated.
+     *
+     * @param directory the output directory
+     * @return this operation instance
+     * @since 1.4
+     */
+    public Antlr4Operation outputDirectory(Path directory) {
+        return outputDirectory(directory.toFile());
+    }
+
+    /**
+     * Provides the output directory where all output is generated.
+     *
+     * @param directory the output directory
+     * @return this operation instance
+     * @since 1.4
+     */
+    public Antlr4Operation outputDirectory(String directory) {
+        return outputDirectory(new File(directory));
+    }
+
+    /**
      * Provides the location of grammars and tokens files.
      *
      * @param directory the lib directory
@@ -201,6 +325,28 @@ public class Antlr4Operation extends AbstractOperation<Antlr4Operation> {
     public Antlr4Operation libDirectory(File directory) {
         libDirectory_ = directory;
         return this;
+    }
+
+    /**
+     * Provides the location of grammars and tokens files.
+     *
+     * @param directory the lib directory
+     * @return this operation instance
+     * @since 1.4
+     */
+    public Antlr4Operation libDirectory(Path directory) {
+        return libDirectory(directory.toFile());
+    }
+
+    /**
+     * Provides the location of grammars and tokens files.
+     *
+     * @param directory the lib directory
+     * @return this operation instance
+     * @since 1.4
+     */
+    public Antlr4Operation libDirectory(String directory) {
+        return libDirectory(new File(directory));
     }
 
     /**
