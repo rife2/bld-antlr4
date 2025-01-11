@@ -20,7 +20,7 @@ public class Antlr4Build extends Project {
     public Antlr4Build() {
         pkg = "rife.bld.extension";
         name = "Antlr4";
-        version = version(1,4,0);
+        version = version(1,4,1);
         archiveBaseName = "bld-antlr4";
 
         javaRelease = 17;
@@ -29,11 +29,11 @@ public class Antlr4Build extends Project {
 
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "bld", version(2,1,0)))
+            .include(dependency("com.uwyn.rife2", "bld", version(2,2,0)))
             .include(dependency("org.antlr", "antlr4", version(4,11,1)));
         scope(test)
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,11,0)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,11,0)));
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,11,4)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,11,4)));
 
         javadocOperation()
             .javadocOptions()
